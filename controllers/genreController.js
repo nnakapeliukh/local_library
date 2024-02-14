@@ -27,12 +27,13 @@ exports.genre_create_post = [
 
   // Process request after validation and sanitization.
   asyncHandler(async (req, res, next) => {
+
     // Extract the validation errors from a request.
     const errors = validationResult(req);
+    console.log('do we get here');
 
     // Create a genre object with escaped and trimmed data.
     const genre = new Genre({ name: req.body.name });
-
     if (!errors.isEmpty()) {
       // There are errors. Render the form again with sanitized values/error messages.
       res.render("genre_form", {
