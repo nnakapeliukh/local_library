@@ -7,7 +7,6 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const catalogRouter = require('./routes/catalog');
-const compression = require("compression");
 const helmet = require("helmet");
 
 // Create the Express application object
