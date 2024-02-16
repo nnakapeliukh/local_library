@@ -7,8 +7,21 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 const catalogRouter = require('./routes/catalog');
+const compression = require("compression");
+const helmet = require("helmet");
 
-var app = express();
+// Create the Express application object
+const app = express();
+
+// Add helmet to the middleware chain.
+// Set CSP headers to allow our Bootstrap and Jquery to be served
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      "script-src": ["'self'", "code.jquery.com", "cdn.jsdelivr.net"],
+    },
+  }),
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
