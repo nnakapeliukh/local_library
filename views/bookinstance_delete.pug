@@ -1,0 +1,14 @@
+extends layout 
+
+block content
+    h1 #{title}
+    p  Title: #{bookinstance.book.title}
+    p ISBN: #{bookinstance.book.isbn}
+    p.text-success  #{bookinstance.status}
+
+    p #[strong Do you really want to delete the Copy?]
+
+    form(method='POST')
+        div.form-group
+            input#bookinstanceid.form-control(type='hidden' name='bookinstanceid', value=bookinstance._id)
+        button.btn.btn-primary(type='submit') Delete
